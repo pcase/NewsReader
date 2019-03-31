@@ -10,6 +10,8 @@ import UIKit
 import SVProgressHUD
 import SwiftyJSON
 import Alamofire
+import AlamofireImage
+
 import Kingfisher
 
 class NewsReaderTableViewController: UITableViewController {
@@ -28,6 +30,9 @@ class NewsReaderTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.estimatedRowHeight = 200
+        tableView.rowHeight = UITableView.automaticDimension
         
         downloadNews {
             DispatchQueue.main.async {
@@ -57,12 +62,52 @@ class NewsReaderTableViewController: UITableViewController {
         let news = newsDataList[indexPath.row]
         cell.title.text = news.title + " - " + news.publish_date
         cell.summary.text = news.summary
-        let url = URL(string: news.image_url)
-        cell.imageView?.kf.setImage(with: url)
+        
+        let cellImage = UIImageView()
+        cellImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        cellImage.contentMode = UIView.ContentMode.scaleAspectFill
+        cellImage.clipsToBounds = true
+        Alamofire.request(URL(string: news.image_url) ?? "").responseImage { response in
+
+            if let image = response.result.value {
+                cellImage.image = image
+            }
+        }
+        cell.addSubview(cellImage)
 
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //calculate the height of label cells automatically in each section
+        if indexPath.row == 0 || indexPath.row == 1 { return UITableView.automaticDimension }
+            
+            // calculating the height of image for indexPath
+        else if indexPath.row == 2, let image = newsDataList[indexPath.section].image {
+            
+            print("heightForRowAt indexPath : \(indexPath)")
+            //image
+            
+            let imageWidth = image.size.width
+            let imageHeight = image.size.height
+            
+            guard imageWidth > 0 && imageHeight > 0 else { return UITableView.automaticDimension }
+            
+            //images always be the full width of the screen
+            let requiredWidth = tableView.frame.width
+            
+            let widthRatio = requiredWidth / imageWidth
+            
+            let requiredHeight = imageHeight * widthRatio
+            
+            print("returned height \(requiredHeight) at indexPath: \(indexPath)")
+            return requiredHeight
+            
+            
+        }
+        else { return UITableView.automaticDimension }
+    }
+    
     // MARK: Network functions
     
     func downloadNews(completed: @escaping DownloadComplete) {
