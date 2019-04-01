@@ -25,7 +25,8 @@ class NewsReaderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.estimatedRowHeight = 200
+//        tableView.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
         downloadNews {
@@ -53,7 +54,7 @@ class NewsReaderTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! TableViewCell
 
         let news = newsDataList[indexPath.row]
-        cell.title.text = news.title + " - " + news.publish_date
+        cell.title.text = news.title
         cell.summary.text = news.summary
         
         // Create a correctly-sized subview, download and set the image, and add
@@ -79,28 +80,32 @@ class NewsReaderTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! TableViewCell
     }
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-       
-        // Calculate the height of label cells automatically in each section
-        if indexPath.row == 0 || indexPath.row == 1 { return UITableView.automaticDimension }
-            
-        // Calculate the height of image for indexPath
-        else if indexPath.row == 2, let image = newsDataList[indexPath.section].image {
-            
-            let imageWidth = image.size.width
-            let imageHeight = image.size.height
-            
-            guard imageWidth > 0 && imageHeight > 0 else { return UITableView.automaticDimension }
-            
-            // Images always be the full width of the screen
-            let requiredWidth = tableView.frame.width
-            let widthRatio = requiredWidth / imageWidth
-            let requiredHeight = imageHeight * widthRatio
-        
-            return requiredHeight
-        }
-        else { return UITableView.automaticDimension }
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        // Calculate the height of label cells automatically in each section
+//        if indexPath.row == 0 || indexPath.row == 1 {
+//            return UITableView.automaticDimension
+//        }
+//
+//        // Calculate the height of image for indexPath
+//        else if indexPath.row == 2, let image = newsDataList[indexPath.section].image {
+//
+//            let imageWidth = image.size.width
+//            let imageHeight = image.size.height
+//
+//            guard imageWidth > 0 && imageHeight > 0 else { return UITableView.automaticDimension }
+//
+//            // Images always be the full width of the screen
+//            let requiredWidth = tableView.frame.width
+//            let widthRatio = requiredWidth / imageWidth
+//            let requiredHeight = imageHeight * widthRatio
+//
+//            return requiredHeight
+//        }
+//        else {
+//            return UITableView.automaticDimension
+//        }
+//    }
     
     // MARK: Network functions
     
