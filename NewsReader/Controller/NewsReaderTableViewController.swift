@@ -71,6 +71,8 @@ class NewsReaderTableViewController: UITableViewController {
             }
         }
         cell.addSubview(cellImage)
+
+        tableView.reloadRows(at: [indexPath], with: .automatic)
         
         return cell
     }
