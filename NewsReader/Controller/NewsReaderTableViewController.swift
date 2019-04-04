@@ -25,7 +25,7 @@ class NewsReaderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        tableView.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -34,6 +34,11 @@ class NewsReaderTableViewController: UITableViewController {
                 self.updateUI()
             }
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+            updateUI()
     }
     
     func updateUI() {
@@ -57,22 +62,29 @@ class NewsReaderTableViewController: UITableViewController {
         cell.title.text = news.title
         cell.summary.text = news.summary
         
-        // Create a correctly-sized subview, download and set the image, and add
-        // the subview to the cell
-        let cellImage = UIImageView()
-        cellImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        cellImage.contentMode = UIView.ContentMode.scaleAspectFill
-        cellImage.clipsToBounds = true
-        
         Alamofire.request(URL(string: news.image_url) ?? "").responseImage { response in
 
             if let image = response.result.value {
-                cellImage.image = image
+                cell.imageView?.image = image
             }
         }
-        cell.addSubview(cellImage)
-
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        // Create a correctly-sized subview, download and set the image, and add
+        // the subview to the cell
+//        let cellImage = UIImageView()
+//        cellImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+//        cellImage.contentMode = UIView.ContentMode.scaleAspectFill
+//        cellImage.clipsToBounds = true
+//        
+//        Alamofire.request(URL(string: news.image_url) ?? "").responseImage { response in
+//
+//            if let image = response.result.value {
+//                cellImage.image = image
+//            }
+//        }
+//        cell.addSubview(cellImage)
+//
+//        tableView.reloadRows(at: [indexPath], with: .automatic)
         
         return cell
     }
