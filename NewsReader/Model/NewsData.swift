@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// Major parts of news stories
 class NewsData: NSObject {
     
     var title: String = ""

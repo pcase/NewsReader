@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Custom UITableViewCell
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
@@ -15,18 +16,25 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    /**
+     Overriding to customize the image view
+     
+     - Parameter:
+     
+     - Throws:
+     
+     - Returns:
+     */
     override func layoutSubviews() {
-        imageView?.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        imageView?.frame = CGRect(x: 50, y: 50, width: 100, height: 100)
         imageView?.contentMode = UIView.ContentMode.scaleAspectFill
-        imageView?.clipsToBounds = true
+        imageView?.clipsToBounds = false
+        imageView?.center = CGPoint(x: frame.size.width  / 2, y: frame.size.height / 2)
     }
 }

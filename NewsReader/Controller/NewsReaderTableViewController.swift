@@ -12,11 +12,8 @@ import SwiftyJSON
 import Alamofire
 import AlamofireImage
 
-import Kingfisher
-
 class NewsReaderTableViewController: UITableViewController {
-
-    var titles: [String] = []
+    
     var newsDataList: [NewsData] = []
     var apiKey = "2624297672fe4e60b7d9316027ccec42"
     let API_URL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2624297672fe4e60b7d9316027ccec42"
@@ -25,10 +22,14 @@ class NewsReaderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set cell content insets
         tableView.contentInset = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        
+        // Enable self-sizing cells
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         
+        // Call downloadNews() to get the news headlines
         downloadNews {
             DispatchQueue.main.async {
                 self.updateUI()
@@ -41,6 +42,13 @@ class NewsReaderTableViewController: UITableViewController {
             updateUI()
     }
     
+    /**
+     Reloads the table view data
+     
+     - Parameter:
+     - Throws:
+     - Returns:
+     */
     func updateUI() {
         tableView.reloadData()
     }
@@ -61,68 +69,27 @@ class NewsReaderTableViewController: UITableViewController {
         let news = newsDataList[indexPath.row]
         cell.title.text = news.title
         cell.summary.text = news.summary
-        
+
         Alamofire.request(URL(string: news.image_url) ?? "").responseImage { response in
 
             if let image = response.result.value {
                 cell.imageView?.image = image
             }
-        }
-        
-        // Create a correctly-sized subview, download and set the image, and add
-        // the subview to the cell
-//        let cellImage = UIImageView()
-//        cellImage.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-//        cellImage.contentMode = UIView.ContentMode.scaleAspectFill
-//        cellImage.clipsToBounds = true
-//        
-//        Alamofire.request(URL(string: news.image_url) ?? "").responseImage { response in
-//
-//            if let image = response.result.value {
-//                cellImage.image = image
-//            }
-//        }
-//        cell.addSubview(cellImage)
-//
-//        tableView.reloadRows(at: [indexPath], with: .automatic)
-        
+        }        
         return cell
     }
     
-    
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier", for: indexPath) as! TableViewCell
-    }
-
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//
-//        // Calculate the height of label cells automatically in each section
-//        if indexPath.row == 0 || indexPath.row == 1 {
-//            return UITableView.automaticDimension
-//        }
-//
-//        // Calculate the height of image for indexPath
-//        else if indexPath.row == 2, let image = newsDataList[indexPath.section].image {
-//
-//            let imageWidth = image.size.width
-//            let imageHeight = image.size.height
-//
-//            guard imageWidth > 0 && imageHeight > 0 else { return UITableView.automaticDimension }
-//
-//            // Images always be the full width of the screen
-//            let requiredWidth = tableView.frame.width
-//            let widthRatio = requiredWidth / imageWidth
-//            let requiredHeight = imageHeight * widthRatio
-//
-//            return requiredHeight
-//        }
-//        else {
-//            return UITableView.automaticDimension
-//        }
-//    }
-    
     // MARK: Network functions
     
+    /**
+     Uses Alamofire to make a network call to the CNN news API
+     
+     - Parameter completed: completion handler
+     
+     - Throws:
+     
+     - Returns:
+     */
     func downloadNews(completed: @escaping DownloadComplete) {
         SVProgressHUD.show()
         Alamofire.request(API_URL).responseJSON{ (response) in
