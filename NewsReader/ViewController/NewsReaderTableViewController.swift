@@ -13,8 +13,6 @@ import SwiftyJSON
 class NewsReaderTableViewController: UITableViewController {
     
     var newsDataList: [NewsData] = []
-    var apiKey = "2624297672fe4e60b7d9316027ccec42"
-    let API_URL = "https://newsapi.org/v2/top-headlines?country=us&apiKey=2624297672fe4e60b7d9316027ccec42"
     private let newsReaderModelController: NewsReaderModelController
         
     required init?(coder aDecoder: NSCoder) {
@@ -33,7 +31,7 @@ class NewsReaderTableViewController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         
         // Call newsReaderModelController to get the news headlines
-        newsReaderModelController.downloadNews(apiUrl: API_URL) { (response) in
+        newsReaderModelController.downloadNews(apiUrl: Constants.Urls.CNN_API_URL) { (response) in
             if let responseArray = response as? [NewsData] {
                 for news in responseArray {
                     self.newsDataList.append(news)
@@ -78,7 +76,7 @@ class NewsReaderTableViewController: UITableViewController {
         cell.title.text = news.title
         cell.summary.text = news.summary
 
-        newsReaderModelController.downloadNews(apiUrl: API_URL) { (response) in
+        newsReaderModelController.downloadNews(apiUrl: Constants.Urls.CNN_API_URL) { (response) in
             if let responseArray = response as? [NewsData] {
                 for news in responseArray {
                     self.newsDataList.append(news)

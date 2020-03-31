@@ -13,6 +13,7 @@
 		DBE843AA225098DE004E428B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE843A9225098DE004E428B /* TableViewCell.swift */; };
 		DBE843AC22509A37004E428B /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE843AB22509A37004E428B /* NewsData.swift */; };
 		DBED12E62433C48D007E7FE2 /* NewsReaderModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED12E52433C48D007E7FE2 /* NewsReaderModelController.swift */; };
+		DBED12E82433DCBD007E7FE2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED12E72433DCBD007E7FE2 /* Constants.swift */; };
 		DBFCC0D1225007C80075DE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFCC0D0225007C80075DE2E /* AppDelegate.swift */; };
 		DBFCC0D6225007C80075DE2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFCC0D4225007C80075DE2E /* Main.storyboard */; };
 		DBFCC0D8225007CA0075DE2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFCC0D7225007CA0075DE2E /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		DBE843A9225098DE004E428B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DBE843AB22509A37004E428B /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
 		DBED12E52433C48D007E7FE2 /* NewsReaderModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderModelController.swift; sourceTree = "<group>"; };
+		DBED12E72433DCBD007E7FE2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DBFCC0CD225007C80075DE2E /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFCC0D0225007C80075DE2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBFCC0D5225007C80075DE2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				DBFCC0D0225007C80075DE2E /* AppDelegate.swift */,
 				DBFCC0D7225007CA0075DE2E /* Assets.xcassets */,
 				DBFCC0DC225007CA0075DE2E /* Info.plist */,
+				DBED12E72433DCBD007E7FE2 /* Constants.swift */,
 			);
 			path = NewsReader;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				DBFCC0D1225007C80075DE2E /* AppDelegate.swift in Sources */,
 				DBED12E62433C48D007E7FE2 /* NewsReaderModelController.swift in Sources */,
 				DBE843AA225098DE004E428B /* TableViewCell.swift in Sources */,
+				DBED12E82433DCBD007E7FE2 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
