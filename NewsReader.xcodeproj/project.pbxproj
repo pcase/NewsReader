@@ -12,6 +12,7 @@
 		DB889527225017E90099503F /* NewsReaderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB889526225017E90099503F /* NewsReaderTableViewController.swift */; };
 		DBE843AA225098DE004E428B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE843A9225098DE004E428B /* TableViewCell.swift */; };
 		DBE843AC22509A37004E428B /* NewsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE843AB22509A37004E428B /* NewsData.swift */; };
+		DBED12E62433C48D007E7FE2 /* NewsReaderModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBED12E52433C48D007E7FE2 /* NewsReaderModelController.swift */; };
 		DBFCC0D1225007C80075DE2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFCC0D0225007C80075DE2E /* AppDelegate.swift */; };
 		DBFCC0D6225007C80075DE2E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBFCC0D4225007C80075DE2E /* Main.storyboard */; };
 		DBFCC0D8225007CA0075DE2E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFCC0D7225007CA0075DE2E /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		DB889526225017E90099503F /* NewsReaderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderTableViewController.swift; sourceTree = "<group>"; };
 		DBE843A9225098DE004E428B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DBE843AB22509A37004E428B /* NewsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsData.swift; sourceTree = "<group>"; };
+		DBED12E52433C48D007E7FE2 /* NewsReaderModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderModelController.swift; sourceTree = "<group>"; };
 		DBFCC0CD225007C80075DE2E /* NewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFCC0D0225007C80075DE2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBFCC0D5225007C80075DE2E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -134,12 +136,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DB88951D22500B730099503F /* Controller */ = {
+		DB88951D22500B730099503F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				DB889526225017E90099503F /* NewsReaderTableViewController.swift */,
 			);
-			path = Controller;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DBED12E42433C43D007E7FE2 /* ModelController */ = {
+			isa = PBXGroup;
+			children = (
+				DBED12E52433C48D007E7FE2 /* NewsReaderModelController.swift */,
+			);
+			path = ModelController;
 			sourceTree = "<group>";
 		};
 		DBFCC0C4225007C80075DE2E = {
@@ -167,9 +177,10 @@
 		DBFCC0CF225007C80075DE2E /* NewsReader */ = {
 			isa = PBXGroup;
 			children = (
+				DBED12E42433C43D007E7FE2 /* ModelController */,
 				DB88951B22500A5F0099503F /* Model */,
 				DB88951C22500B6A0099503F /* View */,
-				DB88951D22500B730099503F /* Controller */,
+				DB88951D22500B730099503F /* ViewController */,
 				DBFCC0D0225007C80075DE2E /* AppDelegate.swift */,
 				DBFCC0D7225007CA0075DE2E /* Assets.xcassets */,
 				DBFCC0DC225007CA0075DE2E /* Info.plist */,
@@ -416,6 +427,7 @@
 				DBE843AC22509A37004E428B /* NewsData.swift in Sources */,
 				DB889527225017E90099503F /* NewsReaderTableViewController.swift in Sources */,
 				DBFCC0D1225007C80075DE2E /* AppDelegate.swift in Sources */,
+				DBED12E62433C48D007E7FE2 /* NewsReaderModelController.swift in Sources */,
 				DBE843AA225098DE004E428B /* TableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
